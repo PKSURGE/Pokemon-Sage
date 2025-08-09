@@ -1,17 +1,9 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #def3f6;
+    margin: 0;
+    overflow: hidden;
+    background: #87CEEB; /* Sky blue */
 }
 
-button {
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  background-color: #ffcb05;
-  border: 2px solid #3b4cca;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #f8d12f;
+canvas {
+    display: block;
 }
