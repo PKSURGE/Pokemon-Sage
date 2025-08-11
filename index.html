@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokémon 3D</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pokemon Sage - Starter Demo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button id="startButton">Start Game</button>
+  <!-- Start screen -->
+  <div id="startScreen" class="overlay">
+    <h1>Pokémon Sage</h1>
+    <p>Choose your destiny — one of three mystery starters awaits.</p>
+    <button id="startButton">Start Game</button>
+  </div>
+
+  <!-- Starter selection screen -->
+  <div id="selectScreen" class="overlay hidden">
+    <h2>Pick your starter</h2>
+    <div id="startersRow"></div>
+    <p class="hint">Types are hidden until you pick. Good luck!</p>
+  </div>
+
+  <!-- Battle UI -->
+  <div id="battleUI" class="overlay hidden">
+    <div id="battleHeader">
+      <div id="rivalInfo" class="info">
+        <div id="rivalName"></div>
+        <div id="rivalHP" class="hpbar"><div class="hp"></div></div>
+      </div>
+      <div id="playerInfo" class="info">
+        <div id="playerName"></div>
+        <div id="playerHP" class="hpbar"><div class="hp"></div></div>
+      </div>
+    </div>
+
+    <div id="battleScene">
+      <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <div id="battleControls">
+      <div id="movesGrid"></div>
+      <div id="actionRow">
+        <button id="megaBtn">Mega</button>
+        <button id="runBtn">Run</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div id="messageBox" class="hidden"></div>
+
+  <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
   <script src="main.js"></script>
 </body>
