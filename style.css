@@ -1,9 +1,28 @@
 body {
-    margin: 0;
-    overflow: hidden;
-    background: #87CEEB; /* Sky blue */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #def3f6;
+  overflow: hidden;
 }
 
 canvas {
-    display: block;
+  display: block;
+}
+
+#startButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  background-color: #ffcb05;
+  border: 2px solid #3b4cca;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#startButton:hover {
+  background-color: #f8d12f;
 }
