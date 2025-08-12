@@ -3,29 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pokemon Sage - Lab & Rival Demo</title>
+  <title>Pokémon Sage — Lab Demo</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Overworld -->
+  <!-- OVERWORLD (simple entry screen) -->
   <div id="overworld" class="screen">
     <canvas id="owCanvas" class="fullCanvas"></canvas>
-    <div id="owHints" class="hud">
-      <div>Use WASD / Arrow keys to move. Walk up to the lab to enter.</div>
+    <div class="hud">
+      <h1>Pokémon Sage — Town</h1>
+      <p>Walk to the lab (or click the button) to begin.</p>
+      <button id="enterLabBtn" class="uiBtn">Enter Professor's Lab</button>
     </div>
   </div>
 
-  <!-- Lab interior & starter table (triggered on entering) -->
+  <!-- LAB SCENE + STARTER SELECTION -->
   <div id="labScene" class="screen hidden">
     <canvas id="labCanvas" class="fullCanvas"></canvas>
-    <div id="labOverlay" class="uiCard">
+
+    <div id="labUI" class="uiCard">
       <h2>Professor Evergreen</h2>
-      <p>Welcome! Choose one of these starters.</p>
+      <p>Welcome, trainer! Choose a starter Pokémon.</p>
       <div id="startersRow" class="startersRow"></div>
+      <div style="text-align:right;margin-top:8px;">
+        <button id="backToTown" class="uiBtn small">Back</button>
+      </div>
     </div>
   </div>
 
-  <!-- Battle UI (ORAS-style bottom panels) -->
+  <!-- BATTLE UI -->
   <div id="battleUI" class="screen hidden">
     <canvas id="battleCanvas" class="fullCanvas"></canvas>
 
@@ -49,9 +55,12 @@
         <button id="runBtn" class="menuBtn">Run</button>
         <button id="megaBtn" class="menuBtn mega">Mega</button>
       </div>
+
       <div id="movesPanel" class="movesPanel hidden">
         <div id="movesGrid" class="movesGrid"></div>
-        <button id="movesBack" class="backBtn">Back</button>
+        <div style="display:flex;justify-content:flex-end;margin-top:8px;">
+          <button id="movesBack" class="uiBtn small">Back</button>
+        </div>
       </div>
     </div>
 
