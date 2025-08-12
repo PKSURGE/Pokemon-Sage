@@ -3,54 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pokemon Sage - Starter Demo</title>
+  <title>Pokemon Sage - Lab & Rival Demo</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Start screen -->
-  <div id="startScreen" class="overlay">
-    <h1>Pokémon Sage</h1>
-    <p>Choose your destiny — one of three mystery starters awaits.</p>
-    <button id="startButton">Start Game</button>
+  <!-- Overworld -->
+  <div id="overworld" class="screen">
+    <canvas id="owCanvas" class="fullCanvas"></canvas>
+    <div id="owHints" class="hud">
+      <div>Use WASD / Arrow keys to move. Walk up to the lab to enter.</div>
+    </div>
   </div>
 
-  <!-- Starter selection screen -->
-  <div id="selectScreen" class="overlay hidden">
-    <h2>Pick your starter</h2>
-    <div id="startersRow"></div>
-    <p class="hint">Types & stats are hidden until you pick. Good luck!</p>
+  <!-- Lab interior & starter table (triggered on entering) -->
+  <div id="labScene" class="screen hidden">
+    <canvas id="labCanvas" class="fullCanvas"></canvas>
+    <div id="labOverlay" class="uiCard">
+      <h2>Professor Evergreen</h2>
+      <p>Welcome! Choose one of these starters.</p>
+      <div id="startersRow" class="startersRow"></div>
+    </div>
   </div>
 
-  <!-- Battle UI -->
-  <div id="battleUI" class="overlay hidden">
-    <div id="battleHeader">
-      <div id="rivalInfo" class="info">
-        <div id="rivalName" class="nameLine"></div>
-        <div id="rivalLevel" class="levelLine"></div>
-        <div id="rivalHP" class="hpbar"><div class="hp"></div></div>
+  <!-- Battle UI (ORAS-style bottom panels) -->
+  <div id="battleUI" class="screen hidden">
+    <canvas id="battleCanvas" class="fullCanvas"></canvas>
+
+    <div id="battleTop" class="battleTop">
+      <div id="oppInfo" class="infoBox">
+        <div id="oppName" class="nameLine"></div>
+        <div id="oppLevel" class="levelLine"></div>
+        <div id="oppHP" class="hpbar"><div class="hp"></div></div>
       </div>
-      <div id="playerInfo" class="info">
+      <div id="playerInfo" class="infoBox">
         <div id="playerName" class="nameLine"></div>
         <div id="playerLevel" class="levelLine"></div>
         <div id="playerHP" class="hpbar"><div class="hp"></div></div>
       </div>
     </div>
 
-    <div id="battleScene">
-      <canvas id="gameCanvas"></canvas>
-    </div>
-
-    <div id="battleControls">
-      <div id="movesGrid"></div>
-      <div id="actionRow">
-        <button id="megaBtn">Mega</button>
-        <button id="runBtn">Run</button>
+    <div id="battleBottom" class="battleBottom">
+      <div id="mainMenu" class="mainMenu">
+        <button id="fightBtn" class="menuBtn">Fight</button>
+        <button id="bagBtn" class="menuBtn">Bag</button>
+        <button id="runBtn" class="menuBtn">Run</button>
+        <button id="megaBtn" class="menuBtn mega">Mega</button>
+      </div>
+      <div id="movesPanel" class="movesPanel hidden">
+        <div id="movesGrid" class="movesGrid"></div>
+        <button id="movesBack" class="backBtn">Back</button>
       </div>
     </div>
-  </div>
 
-  <!-- Messages -->
-  <div id="messageBox" class="hidden"></div>
+    <div id="messageBox" class="messageBox hidden"></div>
+  </div>
 
   <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
