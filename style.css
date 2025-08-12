@@ -1,59 +1,58 @@
 :root{
-  --ui-bg: rgba(255,255,255,0.9);
+  --ui-bg: rgba(255,255,255,0.95);
   --accent: #ffcb05;
   --accent-dark: #f8d12f;
-  --blue: #3b82f6;
+  --text-dark: #062a3a;
 }
 
-/* Basics */
-* { box-sizing: border-box; }
-html,body { height:100%; margin:0; font-family:Inter, Arial, sans-serif; background:#87CEEB; }
-.overlay { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-.hidden { display:none; }
+/* basics */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:#9fd8f0; color:var(--text-dark)}
+.fullCanvas{width:100%;height:100%;display:block}
 
-/* Start screen */
-#startScreen h1 { font-size:3rem; margin:0 0 8px; color:#08306b; text-shadow:0 2px 0 rgba(0,0,0,0.05); }
-#startScreen p { margin:0 0 20px; color:#08306b; }
-button {
-  font-size:1.05rem; padding:10px 18px; background:var(--accent); border:3px solid #3b4cca; cursor:pointer; border-radius:8px;
-}
-button:hover { background:var(--accent-dark); }
+/* screens */
+.screen{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:center}
+.hidden{display:none}
 
-/* Starter selection */
-#startersRow { display:flex; gap:18px; padding:12px; flex-wrap:wrap; justify-content:center; }
-.starterCard { width:220px; background:var(--ui-bg); border-radius:10px; padding:8px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
-.starterCanvas { width:200px; height:140px; background:linear-gradient(#def3f6,#bfe9f0); border-radius:8px; margin:0 auto 8px; display:block; }
-.starterName { font-weight:700; margin-bottom:6px; }
-.smallHint { font-size:.9rem; color:#333; }
+/* Overworld HUD */
+#owHints{position:absolute;left:12px;top:12px;background:var(--ui-bg);padding:8px 12px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
 
-/* Battle UI */
-#battleUI { align-items:stretch; justify-content:flex-start; padding-top:10px; gap:8px; }
-#battleHeader { display:flex; justify-content:space-between; width:100%; padding:6px 20px; color:#fff; }
-.info { width:45%; background:rgba(0,0,0,0.25); padding:6px 10px; border-radius:8px; color:#fff; }
-.nameLine { font-weight:700; font-size:1.05rem; }
-.levelLine { font-size:.95rem; opacity:0.9; margin-top:4px; }
+/* Lab overlay starter card */
+.uiCard{position:absolute;right:20px;top:20px;width:360px;background:var(--ui-bg);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)}
+.startersRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.starterCard{width:160px;background:#fff;padding:10px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.12);text-align:center}
+.starterCanvas{width:140px;height:110px;border-radius:8px;background:linear-gradient(#def3f6,#bfe9f0);display:block;margin:0 auto 8px}
+.starterName{font-weight:700}
+.starterChoose{margin-top:8px;padding:8px 10px;background:var(--accent);border:2px solid #3b4cca;border-radius:8px;cursor:pointer}
+
+/* Battle top info */
+.battleTop{position:absolute;left:12px;right:12px;top:6px;display:flex;justify-content:space-between;gap:12px;padding:6px}
+.infoBox{width:45%;background:rgba(0,0,0,0.24);color:#fff;padding:8px;border-radius:8px}
+.nameLine{font-weight:700;font-size:1.05rem}
+.levelLine{font-size:.95rem;opacity:.95;margin-top:4px}
 
 /* HP */
-.hpbar { width:100%; height:14px; background:rgba(255,255,255,0.25); border-radius:8px; margin-top:6px; overflow:hidden; }
-.hpbar .hp { height:100%; width:100%; background:linear-gradient(#4ade80,#16a34a); transition: width 300ms ease; }
+.hpbar{width:100%;height:14px;background:rgba(255,255,255,0.22);border-radius:8px;margin-top:8px;overflow:hidden}
+.hpbar .hp{height:100%;width:100%;background:linear-gradient(#4ade80,#16a34a);transition:width 300ms ease}
 
-/* Scene */
-#battleScene { flex:1; display:flex; align-items:center; justify-content:center; position:relative; height:55vh; width:100%; }
-#gameCanvas { width:100%; height:100%; display:block; }
+/* bottom area */
+.battleBottom{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;align-items:stretch;gap:10px}
+.mainMenu{display:flex;gap:8px;justify-content:space-between}
+.menuBtn{flex:1;padding:12px;border-radius:10px;background:#fff;border:2px solid #e5e7eb;font-weight:700;cursor:pointer}
+.menuBtn:active{transform:translateY(1px)}
+.menuBtn.mega{background:linear-gradient(90deg,#ff7a7a,#ffcd4d);border:2px solid #b45309}
 
-#battleControls { width:100%; padding:12px 20px; background:var(--ui-bg); display:flex; flex-direction:column; gap:10px; box-shadow:0 -6px 18px rgba(0,0,0,0.08); }
-#movesGrid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
-.moveBtn { padding:10px; border-radius:8px; background:#fff; border:2px solid #e5e7eb; cursor:pointer; font-weight:600; }
-.moveBtn:active { transform:translateY(1px); }
-#actionRow { display:flex; gap:8px; justify-content:flex-end; }
-#megaBtn { background:linear-gradient(90deg,#ff7a7a,#ffcd4d); border:2px solid #b45309; padding:10px 14px; border-radius:8px; cursor:pointer; }
-#runBtn { background:#ef4444; color:#fff; border-radius:8px; padding:10px 14px; border:none; cursor:pointer; }
+/* moves panel */
+.movesPanel{background:var(--ui-bg);padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.16)}
+.movesGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.moveBtn{padding:10px;border-radius:8px;background:#fff;border:2px solid #e5e7eb;cursor:pointer;font-weight:700}
+.moveBtn.locked{opacity:0.45;background:#f3f4f6;cursor:default}
 
-/* Message box */
-#messageBox { position:fixed; left:50%; bottom:20px; transform:translateX(-50%); background:rgba(0,0,0,0.78); color:#fff; padding:10px 14px; border-radius:8px; z-index:50; }
+/* message box */
+.messageBox{position:absolute;left:50%;bottom:22vh;transform:translateX(-50%);background:rgba(0,0,0,0.78);color:#fff;padding:10px 14px;border-radius:8px;z-index:50}
 
-/* Responsive */
+/* responsive */
 @media (max-width:900px){
-  .starterCard { width:150px; }
-  #battleHeader { flex-direction:column; gap:8px; }
+  .uiCard{right:8px;left:8px;width:auto}
+  .starterCard{width:120px}
 }
