@@ -1,29 +1,31 @@
 :root{
-  --ui-bg: rgba(255,255,255,0.95);
+  --ui-bg: rgba(255,255,255,0.96);
   --accent: #ffcb05;
   --accent-dark: #f8d12f;
-  --text-dark: #062a3a;
+  --text-dark: #07263a;
 }
 
-/* basics */
+/* Reset & basics */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:#9fd8f0; color:var(--text-dark)}
+html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:#9fd8f0;color:var(--text-dark)}
 .fullCanvas{width:100%;height:100%;display:block}
 
 /* screens */
 .screen{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:center}
 .hidden{display:none}
 
-/* Overworld HUD */
-#owHints{position:absolute;left:12px;top:12px;background:var(--ui-bg);padding:8px 12px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+/* simple HUD / buttons */
+.hud{position:absolute;left:18px;top:18px;background:var(--ui-bg);padding:12px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.uiBtn{padding:10px 14px;border-radius:8px;background:var(--accent);border:2px solid #3b4cca;cursor:pointer;font-weight:700}
+.uiBtn.small{padding:6px 8px;font-size:0.9rem}
 
-/* Lab overlay starter card */
-.uiCard{position:absolute;right:20px;top:20px;width:360px;background:var(--ui-bg);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)}
+/* Lab UI card */
+.uiCard{position:absolute;right:18px;top:18px;width:360px;background:var(--ui-bg);padding:14px;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,0.14)}
 .startersRow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.starterCard{width:160px;background:#fff;padding:10px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.12);text-align:center}
-.starterCanvas{width:140px;height:110px;border-radius:8px;background:linear-gradient(#def3f6,#bfe9f0);display:block;margin:0 auto 8px}
-.starterName{font-weight:700}
-.starterChoose{margin-top:8px;padding:8px 10px;background:var(--accent);border:2px solid #3b4cca;border-radius:8px;cursor:pointer}
+.starterCard{width:150px;background:#fff;padding:8px;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,0.12);text-align:center}
+.starterCanvas{width:130px;height:96px;border-radius:8px;background:linear-gradient(#def3f6,#bfe9f0);display:block;margin:6px auto}
+.starterName{font-weight:700;margin-top:6px}
+.starterChoose{margin-top:8px;padding:8px 10px;background:var(--accent);border:2px solid #3b4cca;border-radius:8px;cursor:pointer;font-weight:700}
 
 /* Battle top info */
 .battleTop{position:absolute;left:12px;right:12px;top:6px;display:flex;justify-content:space-between;gap:12px;padding:6px}
@@ -53,6 +55,6 @@ html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:#
 
 /* responsive */
 @media (max-width:900px){
-  .uiCard{right:8px;left:8px;width:auto}
+  .uiCard{right:8px;left:8px}
   .starterCard{width:120px}
 }
